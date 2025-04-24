@@ -13,11 +13,11 @@ public class CarroInserir {
 		Carro carro = new Carro();
 		CarroDAO carrodao = new CarroDAO(con);
 
-		carro.setMontadora("MontadoraX");
-		carro.setNomeVeiculo("VeiculoY");
+		carro.setMontadora("Fiat");
+		carro.setNomeVeiculo("Uno");
 		carro.setQuantidadePortas(3);
 		System.out.println(carrodao.inserir(carro));
-
+		
 		Conexao.fecharConexao(con);
 	}
 }

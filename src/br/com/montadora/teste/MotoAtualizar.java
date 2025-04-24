@@ -6,7 +6,7 @@ import br.com.montadora.conexao.Conexao;
 import br.com.montadora.dao.MotoDAO;
 import br.com.montadora.model.Moto;
 
-public class MotoInserir {
+public class MotoAtualizar {
 	public static void main(String[] args) {
 		Connection con = Conexao.abrirConexao();
 
@@ -16,7 +16,7 @@ public class MotoInserir {
 		moto.setMontadora("OutraMontadora");
 		moto.setNomeVeiculo("GrandeMoto");
 		moto.setQuantidadeAdesivos(12);
-		System.out.println(motodao.inserir(moto));
+		System.out.println(motodao.atualizar(moto));
 
 		Conexao.fecharConexao(con);
 	}

@@ -44,12 +44,30 @@ public class CarroDAO {
 			PreparedStatement ps = getCon().prepareStatement(sql);
 			ps.setString(1, carro.getMontadora());
 			if (ps.executeUpdate() > 0) {
-				return "Deletado com sucesso";
+				return "Carro deletado com sucesso";
 			} else {
-				return "Erro deletar";
+				return "Erro ao deletar";
 			}
 		} catch (SQLException e) {
 			return e.getMessage();
 		}
 	}
+	
+	public String atualizar(Carro carro) {
+		String sql = "update Carro set montadora = ?, nome = ?, quantidadeportas = ? where Id > 3";
+		try {
+			PreparedStatement ps = getCon().prepareStatement(sql);
+			ps.setString(1, carro.getMontadora());
+			ps.setString(2, carro.getNomeVeiculo());
+			ps.setInt(3, carro.getQuantidadePortas());
+			if (ps.executeUpdate() > 0) {
+				return "Atualizado com sucesso";
+			} else {
+				return "Erro ao atualizar";
+			}
+		} catch (SQLException e) {
+			return e.getMessage();
+		}
+	}
+	
 }
