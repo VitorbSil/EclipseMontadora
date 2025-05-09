@@ -2,7 +2,9 @@ package br.com.montadora.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import br.com.montadora.model.Carro;
 
@@ -52,14 +54,13 @@ public class CarroDAO {
 			return e.getMessage();
 		}
 	}
-	
-	public String atualizar(Carro carro) {
-		String sql = "update Carro set montadora = ?, nome = ?, quantidadeportas = ? where Id > 3";
+
+	public String alterar(Carro carro) {
+		String sql = "update Carro set montadora = ? where nome = ?";
 		try {
 			PreparedStatement ps = getCon().prepareStatement(sql);
 			ps.setString(1, carro.getMontadora());
 			ps.setString(2, carro.getNomeVeiculo());
-			ps.setInt(3, carro.getQuantidadePortas());
 			if (ps.executeUpdate() > 0) {
 				return "Atualizado com sucesso";
 			} else {
@@ -69,5 +70,45 @@ public class CarroDAO {
 			return e.getMessage();
 		}
 	}
+
+	public ArrayList<Carro> retornarDados() {
+		String sql = "select * from Carro";
+		ArrayList<Carro> retornarCarro = new ArrayList<Carro>();
+
+		try 
+		{
+			PreparedStatement ps = getCon().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs != null) 
+			{
+				while (rs.next())
+				{
+					Carro carro = new Carro();
+					carro.setNomeVeiculo(rs.getString(1));
+					carro.setMontadora(rs.getString(2));
+					carro.setQuantidadePortas(rs.getInt(3));
+					retornarCarro.add(carro);
+				}
+				return retornarCarro;
+			} 
+			else 
+			{
+				return null;
+			}
+		} 
+		catch (SQLException e)
+		{
+			return null;
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

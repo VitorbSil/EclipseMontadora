@@ -6,7 +6,7 @@ import br.com.montadora.conexao.Conexao;
 import br.com.montadora.dao.CarroDAO;
 import br.com.montadora.model.Carro;
 
-public class CarroAtualizar {
+public class CarroAlterar {
 	public static void main(String[] args) {
 		Connection con = Conexao.abrirConexao();
 
@@ -14,9 +14,8 @@ public class CarroAtualizar {
 		CarroDAO carrodao = new CarroDAO(con);
 
 		carro.setMontadora("MontadoraX");
-		carro.setNomeVeiculo("CarroY");
-		carro.setQuantidadePortas(5);
-		System.out.println(carrodao.atualizar(carro));
+		carro.setNomeVeiculo("Carrão");
+		System.out.println(carrodao.alterar(carro));
 
 		Conexao.fecharConexao(con);
 	}

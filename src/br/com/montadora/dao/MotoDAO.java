@@ -3,8 +3,6 @@ package br.com.montadora.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import br.com.montadora.model.Carro;
 import br.com.montadora.model.Moto;
 
 public class MotoDAO {
